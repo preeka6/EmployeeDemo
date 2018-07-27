@@ -21,13 +21,13 @@ public final static Logger log = Logger.getLogger(EmployeeServiceImpl.class);
  @Autowired
  private EmployeeDAO employeeDao;
  
- @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
- public void addEmployee(Employee employee) {
+ @Transactional(rollbackFor=Exception.class)
+ public void addEmployee(Employee employee) throws Exception {
   employeeDao.addEmployee(employee);
  }
  
 
- @Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor=Exception.class)
+ @Transactional(rollbackFor=Exception.class)
  public void updateEmployee(List<Employee> employee) throws Exception {
   employeeDao.updateEmployee(employee);
  }

@@ -6,7 +6,7 @@ import com.hcl.model.Employee;
 
 public interface EmployeeDAO {
  
- public void addEmployee(Employee employee);
+ public void addEmployee(Employee employee) throws Exception;
  
  public void updateEmployee(List<Employee> employee) throws Exception;
 

@@ -21,13 +21,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
  @Autowired
  private SessionFactory sessionFactory;
  
- public void addEmployee(Employee employee) {
-	 try {
-		 sessionFactory.getCurrentSession().saveOrUpdate(employee);
-	 }catch(Exception e)
-	 {
-		 System.out.println("EXCEPTION CAUGHT....");
+ public void addEmployee(Employee employee) throws Exception {
+	 
+	 if(employee.getAge()<0) {
+		 throw new Exception("Age invalid");
 	 }
+		 sessionFactory.getCurrentSession().saveOrUpdate(employee);	
  }
  
 public void updateEmployee(List<Employee> employee) throws Exception {
