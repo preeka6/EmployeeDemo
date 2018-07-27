@@ -26,7 +26,7 @@
    			  <td align="center">${status.count}</td>
               <td><input name = "employee[${status.index}].id" path="id" value="${employee.id}" readonly="true"/></td>
               <td><input name = "employee[${status.index}].name" path="name" value="${employee.name}"/></td>
-              <td><input name = "employee[${status.index}].age" path="age" value="${employee.age}"/></td>
+              <td><input name = "employee[${status.index}].age" maxlength="2" path="age" value="${employee.age}"/></td>
               <td><input name = "employee[${status.index}].salary" path="salary" value="${employee.salary}"/></td>
    </tr>   
   </c:forEach>  
@@ -45,6 +45,13 @@
 	<table align="center" border="1">
   <tr>
    <th>No Matching Records Found !!!</th>
+   </tr>
+   </table>
+</c:if>
+<c:if test="${!empty employee.errmsg}">
+	<table align="center" border="1">
+  <tr>
+   <th>Oops !!! Something went wrong. Please try again later.</th>
    </tr>
    </table>
 </c:if>

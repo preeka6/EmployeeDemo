@@ -24,7 +24,7 @@
        </tr>
        <tr>
            <td><form:label path="age">Employee Age:</form:label></td>
-           <td><form:input path="age" value="${employee.age}"/></td>
+           <td><form:input path="age" maxlength="2" value="${employee.age}"/></td>
        </tr>
        <tr>
            <td><form:label path="salary">Employee Salary:</form:label></td>

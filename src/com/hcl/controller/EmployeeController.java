@@ -31,7 +31,12 @@ private final static Logger log = Logger.getLogger(EmployeeController.class);
 public ModelAndView saveEmployee(@ModelAttribute("command")EmployeeBean employeeBean, BindingResult result) {
 				
   Employee employee = prepareModel(employeeBean);
-  employeeService.addEmployee(employee);
+  try {
+	employeeService.addEmployee(employee);
+} catch (Exception e) {
+	log.error("saveEmployee() - could not save employee " +employee.toString() + "- Exception -"+ e.getMessage());
+	  return new ModelAndView("error");
+}
   
   return new ModelAndView("redirect:/add.html");
  }
@@ -45,10 +50,11 @@ public ModelAndView updateEmployee(@ModelAttribute("employeeBean")EmployeeBean e
 			employeeService.updateEmployee(emp);
 		} catch (Exception e) {
 			log.error("updateEmployee() - could not update employee " +emp.toString() + "- Exception -"+ e.getMessage());
-			
+			  return new ModelAndView("error");
 		}
   
   return new ModelAndView("redirect:/add.html");
+  
  }
 
 @RequestMapping(value = "/updateWithRollback", method = RequestMethod.POST)
